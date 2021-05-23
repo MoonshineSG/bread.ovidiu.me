@@ -1,0 +1,23 @@
+{
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "images" : [
+    {
+      "scale" : "1x",
+      "filename" : "qr_share~universal@1x.png",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "qr_share~universal@2x.png"
+    },
+    {
+      "filename" : "qr_share~universal@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ]
+}

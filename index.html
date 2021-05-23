@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Bread Calculator</title>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Bread Calculator">
+	<link rel="apple-touch-icon-precomposed" href="icon.png">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+	<link rel="stylesheet" href="bread.css" type="text/css">
+	<link rel="stylesheet" href="jquery-ui.css" type="text/css">
+	
+	<script type="text/javascript" src="jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="pulltorefresh.js"></script>
+	<script type="text/javascript" src="lodash-4.17.20.min.js"></script>
+	<script type="text/javascript" src="knockout-3.5.0.min.js"></script>
+	<script type="text/javascript" src="util.js"></script>
+	<script type="text/javascript" src="ingredients.js"></script>
+
+</head>
+
+<body id="body">
+	<header class="sourdough">
+		<div class="flour-icon"><img class="flour-icon-image" src="wheat-ear.svg" alt=""></div>
+
+		<h1>Bread Calculator</h1>
+	</header>
+
+	<div id="intro" data-bind="html: details"></div>
+
+	<div class="inputs">
+		<div class="box">
+			<div class="clearfix">
+				<label style="margin-top:0 !important" id="qty-label" for="qty">Quantity</label>
+			</div>
+
+			<div class="input-wrapper full">
+				<div class="increment-button-qty" data-bind="click: scaleQty.bind($data, 'down')"><img src="minus.svg"
+						alt="Decrement"></div>
+
+				<div class="increment-button-qty" data-bind="click: scaleQty.bind($data, 'up')"><img src="plus.svg"
+						alt="Increment">
+				</div>
+
+				<input tabindex="1" id="qty" type="number" name="qty" data-bind="value: qty;">
+
+				<p id="pieces_label"></p>
+			</div>
+
+			<div class="clearfix">
+				<label id="size-label" for="size">Weight&nbsp;<span class="normal">( baking dehydration at <span
+							id="dehydration"></span> % )</span></label>
+			</div>
+
+			<div class="input-wrapper full">
+				<div class="increment-button" data-bind="click: scaleSize.bind($data, 'down')"><img src=" minus.svg"
+						alt="Decrement"></div>
+
+				<div class="increment-button" data-bind="click: scaleSize.bind($data, 'up')"><img src="plus.svg"
+						alt="Increment"></div>
+
+				<input class="orange" tabindex="2" id="size" type="number" name="size" data-bind="value: size;">
+
+				<p>g</p>
+			</div>
+		</div>
+
+		<div class="clearfix">
+			<label id="flour-label" for="flour">Flour</label>
+		</div>
+
+		<div class="input-wrapper full">
+			<div class="increment-button" data-bind="click: scaleFlour.bind($data, 'down')"><img src="minus.svg"
+					alt="Decrement"></div>
+
+			<div class="increment-button" data-bind="click: scaleFlour.bind($data, 'up')"><img src="plus.svg"
+					alt="Increment"></div>
+
+			<input class="orange" tabindex="3" id="flour" type="number" name="flour" data-bind="value: recipe.flour;">
+
+			<p>g</p>
+		</div>
+
+		<div class="input-group clearfix">
+			<div class="clearfix">
+				<label id="wf_slider-label" for="wf_slider"></label>
+			</div>
+
+			<div class="clearfix">
+				<div id="wf_slider" tabindex="4" name="wf_slider"></div>
+			</div>
+
+			<p id="wf_split" class="center"></p>
+		</div>
+
+		<div data-bind="foreach: ingredients">
+			<div class="input-group clearfix">
+				<div class="clearfix">
+					<label data-bind="text: nice_name"></label>
+				</div>
+				<div class="input-wrapper left">
+					<input type="number" tabindex="5" data-bind="value: percentage;">
+					<p>%</p>
+				</div>
+
+				<div class="input-wrapper right">
+					<input class="orange" type="number" data-bind="value: value;">
+					<p>g</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="input-group center" style="padding: 5%;">
+			<div class="clearfix" id="add-button-div" style="padding: 10%;">
+				<div id="add-button" onClick="toggleIngredientsList();">Edit ingredients</div>
+			</div>
+		</div>
+
+		<div class="copy sourdough right" onClick="openAsText();">
+			<img src=" copy.png" height="16px" style="padding-right:5px;">open as text
+		</div>
+		<div class="copy sourdough left">
+			<a href="https://sourdough.ovidiu.me">ordering system</a>
+		</div>
+	</div>
+	<p class="reset-footer sourdough" style="text-align: center;">
+		<span>based on <a href="http://brdclc.com/" target="_blank">brdclc.com</a>
+		</span>
+	</p>
+
+	<div id="modal" class="hidden">
+		<div class="modal-panel">
+			<form>
+				<div class="modal-content">
+					<span data-bind="foreach: raw_ingredients">
+						<input type="checkbox" class="ingredient"
+							data-bind="checked: $root.has(name), attr: {id:'raw_'+ $index(), 'name':name};" />
+						<label data-bind="text: nice_name(name) , attr: {'for':'raw_'+ $index()};"></label>
+					</span>
+				</div>
+				<div class="modal-buttongroup">
+					<input type="button" value="Cancel" onClick="toggleIngredientsList();" />
+					<input type="button" value="OK" data-bind="click: addRemoveIngredients" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		ko.options.deferUpdates = true;
+
+		var Ingredient = function (i, parent) {
+			var self = this;
+			self.parent = parent;
+
+			self.name = i['name'];
+			self.hydration = Number(i['hydration']);
+
+			//percentage update only when direct input 
+			self.updatePercentage = true;
+
+			self.percentage = ko.observable(getParameterByName(self.name, 0));
+			self.percentage.subscribe(function (newValue) {
+				updateQueryStringParam(self.name, newValue);
+			});
+
+			self.value = ko.pureComputed({
+				read: function () {
+					return round(self.percentage() / 100 * self.parent.flour());
+				},
+				write: function (newValue) {
+					if (self.updatePercentage) {
+						if (self.parent.flour() > 0) {
+							self.percentage(Math.round(newValue * 100 / self.parent.flour() * 100) / 100);
+						}
+					}
+					self.updatePercentage = true;
+				}
+			});
+
+			//ingredient changes based on flour weight
+			self.parent.flour.subscribe(function (newValue) {
+				self.updatePercentage = false;
+				self.value(round(self.percentage() / 100 * newValue));
+			});
+
+			self.nice_name = ko.pureComputed(function () {
+				return nice_name(self.name);
+			}, self);
+		};
+
+
+		var RecipeModel = function () {
+			var self = this;
+
+			//list kept in a separate file "ingredients.js"
+			self.raw_ingredients = raw_ingredients;
+
+			// semaphores to avoid chain cross updates 
+			self.updatingSize = false;
+			self.updatingFlour = false;
+
+			//QTY
+			self.qty = ko.observable();
+
+			self.qty.subscribe(function (newValue) {
+				updateQueryStringParam('qty', Number(newValue));
+				updateQueryStringParam('flour', self.flour());
+				//update split absolute values
+				self.split($("#wf_slider").slider("option", "value"));
+			});
+
+			//WEIGHT
+			self.dehidrationPercentage = 18;
+			document.getElementById("dehydration").innerHTML = self.dehidrationPercentage;
+
+			self.size = ko.observable();
+			self.size.subscribe(function (newValue) {
+				if (self.updatingFlour) {
+					self.updatingFlour = false;
+				} else {
+					self.updatingSize = true;
+					var totalWeightHydrated = self.size() * self.qty() * 100 / (100 - self.dehidrationPercentage);
+					var totalPercentage = 100 + _.sumBy(self.ingredients(), function (o) {
+						return Number(o.percentage());
+					});
+					var newFlour = 0;
+					if (totalPercentage > 0) {
+						newFlour = totalWeightHydrated * 100 / totalPercentage;
+					}
+					self.flour(round(newFlour));
+				}
+			});
+
+			//FLOUR	
+			self.__flour = ko.observable(); //internal
+			self.flour = ko.pureComputed({
+				read: function () {
+					return self.__flour() * self.qty();
+				},
+				write: function (newValue) {
+					self.__flour(round(newValue / self.qty()));
+					updateQueryStringParam('flour', newValue);
+					//update split absolute values
+					self.split($("#wf_slider").slider("option", "value"));
+					if (self.updatingSize) {
+						self.updatingSize = false;
+					} else {
+						self.updatingFlour = true;
+						var totalWeight = self.flour() + _.sumBy(self.ingredients(), function (o) {
+							return Number(o.value());
+						});
+						var totalWeightDehydrated = totalWeight - (totalWeight * self.dehidrationPercentage / 100);
+
+						var newSize = totalWeightDehydrated / self.qty();
+						self.size(round(newSize));
+					}
+				}
+			});
+
+			//SPLIT
+			self.split = ko.observable(getParameterByName('split', 100));
+			self.split.extend({ notify: 'always' });
+
+			self.split.subscribe(function (newValue) {
+				updateQueryStringParam('split', newValue);
+				if (newValue == 100) {
+					$("#wf_slider-label").html("<span class='normal'>100 % white flour<\/span>");
+					$("#wf_split").html("");
+				} else if (newValue == 0) {
+					$("#wf_slider-label").html("<span class='normal'>100 % wholemeal flour<\/span>");
+					$("#wf_split").html("");
+				} else {
+					$("#wf_slider-label").html("<span class='normal'>" + (100 - newValue) + " % wholemeal flour<\/span>");
+
+					var whiteFlour = round(recipe.flour() * newValue / 100);
+					$("#wf_split").html("<strong class='large'>" + whiteFlour + " g<\/strong> white flour<br/><strong class='large'>" + (recipe.flour() - whiteFlour) + " g<\/strong> wholemeal flour");
+				}
+			});
+
+			// THE REST OF INGREDIENTS
+			self.ingredients = ko.observableArray();
+			_.forEach(self.raw_ingredients, function (i) {
+				if (getParameterByName(i['name']) != null) {
+					self.ingredients.push(new Ingredient(i, self));
+				}
+			});
+
+			//get ingredient by name
+			self.get = function (name) {
+				return _.find(self.ingredients(), {
+					name: name
+				});
+			}
+
+			//check if ingredient is in use
+			self.has = function (name) {
+				return self.get(name) != null;
+			}
+
+			self.addRemoveIngredients = function () {
+				var reload = false;
+				$(".ingredient").each((i, o) => {
+					if (o.checked) {
+						if (!self.has(o.name)) {
+							updateQueryStringParam(o.name, 0);
+							reload = true;
+						}
+					} else {
+						if (self.has(o.name)) {
+							removeParameterByName(o.name);
+							reload = true;
+						}
+					}
+				});
+				if (reload) {
+					location.reload();
+				} else {
+					toggleIngredientsList();
+				}
+			}
+
+			//+/- quick scale
+			self.scaleQty = function (direction) {
+				let currentValue = self.qty();
+				if (direction == "up") {
+					self.qty(currentValue + 1);
+				} else {
+					if (currentValue > 1) {
+						if (currentValue - 1 != 0) {
+							self.qty(currentValue - 1);
+						}
+					}
+				}
+			}
+			self.scaleSize = function (direction) {
+				var incrementAmount = 50;
+				var currentValue = self.size();
+				var nextIncrementUp = Math.ceil(currentValue / incrementAmount) * incrementAmount;
+				var nextIncrementDown = Math.floor(currentValue / incrementAmount) * incrementAmount;
+
+				if (direction == "up") {
+					if (currentValue % incrementAmount == 0) {
+						self.size(nextIncrementUp + incrementAmount);
+					} else {
+						self.size(nextIncrementUp);
+					}
+				} else {
+					if (currentValue > incrementAmount) {
+						if (currentValue % incrementAmount == 0) {
+							self.size(nextIncrementDown - incrementAmount);
+						} else {
+							self.size(nextIncrementDown);
+						}
+					}
+				}
+			}
+			self.scaleFlour = function (direction) {
+				var incrementAmount = 50;
+
+				var currentValue = self.flour();
+				var nextIncrementUp = Math.ceil(currentValue / incrementAmount) * incrementAmount;
+				var nextIncrementDown = Math.floor(currentValue / incrementAmount) * incrementAmount;
+
+				if (direction == "up") {
+					if (currentValue % incrementAmount == 0) {
+						self.flour(nextIncrementUp + incrementAmount);
+					} else {
+						self.flour(nextIncrementUp);
+					}
+				} else {
+					if (currentValue > incrementAmount) {
+						if (currentValue % incrementAmount == 0) {
+							self.flour(nextIncrementDown - incrementAmount);
+						} else {
+							self.flour(nextIncrementDown);
+						}
+					}
+				}
+			}
+
+			//header information about hydration and starter
+			self.details = ko.pureComputed(function () {
+
+				var gramsFlour = self.flour();
+				var gramsStarter = 0;
+
+				var levain = self.get('levain');
+				var poolish = self.get('poolish');
+
+				var has_starter = true;
+				if (typeof levain === 'undefined') {
+					has_starter = false;
+				}
+
+				var has_poolish = true;
+				if (typeof poolish === 'undefined') {
+					has_poolish = false;
+				}
+
+				if (has_starter) {
+					gramsStarter = levain.value();
+					gramsFlour += levain.value() / (100 / levain.hydration);
+				} else if (has_poolish) {
+					gramsStarter = poolish.value();
+					gramsFlour += poolish.value() / (100 / poolish.hydration);
+				}
+
+				var totalWeight = self.flour() + _.sumBy(self.ingredients(), function (o) {
+					return Number(o.value());
+				});
+				var loafWeight = round(totalWeight / self.qty());
+
+				var gramsWater = _.sumBy(self.ingredients(), function (o) {
+					return Number(o.value()) / 100 * o.hydration;
+				});
+				self.totalHydration = Math.round(gramsWater * 100 / gramsFlour * 10) / 10;
+
+				var totalDoughWeightCopy = "";
+				if (totalWeight > 0) {
+					if (self.qty() == 1) {
+						$("#pieces_label").html("loaf");
+						totalDoughWeightCopy = "<p class='center'>Total dough weights <strong>" + round(totalWeight) + " g <\/strong><\/p>";
+					} else {
+						$("#pieces_label").html("loaves");
+						totalDoughWeightCopy = "<p class='center'>Total dough weights <strong>" + round(totalWeight) + " g <\/strong>or<strong> " + loafWeight + " g/loaf<\/strong><\/p>";
+					}
+				}
+
+				var hydrationCopy = "";
+				if (self.totalHydration > 0) {
+					hydrationCopy = "<p class='center'><strong>" + self.totalHydration + " %<\/strong>  💦<\/p>";
+				}
+				var flourCopy = "";
+				if (gramsFlour > 0) {
+					flourCopy = "<p class='center'><strong>" + round(gramsFlour) + " g<\/strong> of flour is needed<\/p>";
+				}
+
+				var starterBuildCopy = "";
+				if (has_starter) {
+					var baseCalcStarter3 = round(gramsStarter / 3);
+					var baseCalcStarter5 = round(gramsStarter / 5);
+					var baseCalcStarter7 = round(gramsStarter / 7);
+					var baseCalcStarter9 = round(gramsStarter / 9);
+					starterBuildCopy = "<p class='center'>Prepare levain at 1:1:1 ratio, <strong>" + baseCalcStarter3 + " : " + baseCalcStarter3 + " : " + baseCalcStarter3 + "<\/strong>,<br/>";
+					starterBuildCopy = starterBuildCopy + "at 1:2:2 ratio, <strong>" + baseCalcStarter5 + " : " + round(baseCalcStarter5 * 2) + " : " + round(baseCalcStarter5 * 2) + "<\/strong>,<br/>";
+					starterBuildCopy = starterBuildCopy + "at 1:3:3 ratio, <strong>" + baseCalcStarter7 + " : " + round(baseCalcStarter7 * 3) + " : " + round(baseCalcStarter7 * 3) + "<\/strong><br/>";
+					starterBuildCopy = starterBuildCopy + "at 1:4:4 ratio, <strong>" + baseCalcStarter9 + " : " + round(baseCalcStarter9 * 4) + " : " + round(baseCalcStarter9 * 4) + "<\/strong><\/p>";
+				} else if (has_poolish) {
+					var baseCalcStarter = round(gramsStarter / 2);					
+					starterBuildCopy = "<p class='center'>Prepare poolish with <strong>" + baseCalcStarter + "g flour, " + baseCalcStarter +"g water<\/strong> and a pinch of yeast.<\/p>";					
+				}
+				
+				return totalDoughWeightCopy + flourCopy + hydrationCopy + starterBuildCopy
+
+			});
+
+			self.exportAsText = function () {
+				var exportText = "Bakers percentage:\n"
+				exportText += "==================\n"
+
+				var splitFlour = Number($("#wf_slider").slider("value"))
+				if (splitFlour == 100) {
+					exportText += padded("Bread Flour") + "100%\n"
+				} else if (splitFlour == 0) {
+					exportText += padded("Wholemeal") + "100%\n"
+				} else {
+					exportText += padded("Bread Flour") + splitFlour + "%\n";
+					exportText += padded("Wholemeal") + (100 - splitFlour) + "%\n";
+				}
+
+				_.forEach(self.ingredients(), function (i) {
+					exportText += padded(i.nice_name()) + i.percentage() + "%\n"
+				});
+
+				exportText += "\n\n";
+				exportText += "" + self.totalHydration + "% 💦\n"
+				exportText += "\n";
+
+				if (self.qty() == 1) {
+					exportText += "To make 1 loaf of about " + self.size() + "g you need:\n"
+				} else {
+					exportText += "To make " + self.qty() + " loaves of about " + self.size() + "g you need:\n"
+				}
+
+				exportText += "\n";
+
+				if (splitFlour == 100) {
+					exportText += padded("Bread Flour") + self.flour() + "g\n"
+				} else if (splitFlour == 0) {
+					exportText += padded("Wholemeal") + self.flour() + "g\n"
+				} else {
+					var gf = self.flour();
+					var wf = round(gf * splitFlour / 100);
+					exportText += padded("Bread Flour") + wf + "g\n";
+					exportText += padded("Wholemeal") + (gf - wf) + "g\n";
+				}
+
+				_.forEach(self.ingredients(), function (i) {
+					exportText += padded(i.nice_name()) + i.value() + "g\n"
+				});
+
+				exportText += "\n\nEdit at https://bread.ovidiu.me/" + location.search + "\n";
+				return exportText;
+			}
+		}
+
+		//jquery UI
+		$("#add-button").button();
+
+		$("#wf_slider").slider({
+			value: getParameterByName('split', 100),
+			min: 0,
+			step: 2.5,
+			max: 100,
+			slide: function (event, ui) {
+				recipe.split(Number(ui.value));
+			},
+			stop: function (event, ui) {
+				recipe.split(Number(ui.value))
+			}
+		});
+
+		//display/hide popup
+		function toggleIngredientsList() {
+			var ingredientsList = document.getElementById("modal");
+			var body = document.getElementById("body");
+
+			if (ingredientsList.classList.contains("hidden")) {
+				body.classList.add("noscroll");
+				ingredientsList.classList.remove("hidden");
+			} else {
+				body.classList.remove("noscroll");
+				ingredientsList.classList.add("hidden");
+			}
+		}
+
+		//called from ios
+		function exportAsText() {
+			return recipe.exportAsText();
+		}
+
+		//called from browser
+		function openAsText() {
+			window.open("", "_self").document.write("<pre id='copy'>" + exportAsText() + "</pre>");
+		}
+
+		//hide features on ios
+		if (navigator.userAgent.startsWith("sourdough")) {
+			$(".sourdough").hide();
+		} else {
+			PullToRefresh.init({
+				mainElement: 'body',
+				onRefresh: function () {
+					location.href = defaultLocation;
+				}
+			});
+		}
+
+		//initialize 
+		var recipe = new RecipeModel();
+		recipe.qty(getParameterByName('qty', 1));
+		recipe.flour(getParameterByName('flour', 100));
+		
+		//update display 
+		ko.applyBindings(recipe);
+
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-167880682-1" type="text/javascript"></script>
+	<script type="text/javascript">
+		if (!navigator.userAgent.startsWith("sourdough")) {
+			window.dataLayer = window.dataLayer || [];
+
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'UA-167880682-1');
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,370 @@
+html {
+    box-sizing: border-box;
+    touch-action: manipulation;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    color: #34321C;
+    font-family: "Avenir Next", "Avenir", sans-serif;
+    width: 90%;
+    margin: 2% auto 0 auto;
+    background: #F7F7F0;
+    line-height: 1.4em;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+@media only screen and (min-width: 320px) {
+    body {
+        max-width: 380px;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid #A5A287;
+}
+
+#intro {
+    margin-top: 2em;
+}
+
+.box {
+    margin: 1px;
+    border: 1px solid rgb(225, 224, 215);
+    padding: 10px;
+}
+
+strong {
+    font-weight: 600;
+}
+
+#intro strong {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#intro ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.inputs label {
+    display: block;
+    float: left;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-top: 16px;
+}
+
+.inputs .volume-label {
+    cursor: pointer;
+    float: right;
+    display: block;
+    font-size: inherit;
+    font-weight: normal;
+    color: #A5A287;
+    margin-bottom: 6px;
+    margin-top: 16px;
+    /*background: rgba(255, 255, 255, 0.1);*/
+    border: 1px solid rgba(225, 224, 215, 0.5);
+    border-radius: 100px;
+    padding: 0 10px;
+}
+
+.inputs .input-wrapper {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    background: #fff;
+    border: 1px solid rgb(225, 224, 215);
+    border-radius: 4px;
+}
+
+.input-wrapper.left {
+    width: 49%;
+    float: left;
+}
+
+.input-wrapper.right {
+    width: 49%;
+    float: right;
+}
+
+.inputs .input-wrapper input {
+    padding: 0.2em 0.3em 0.2em 0.6em;
+}
+
+.inputs .input-wrapper p {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: inline-block;
+    text-align: right;
+    padding: 0 0.6em 0 0;
+    margin: auto;
+    color: #A5A287;
+}
+
+.inputs .increment-button,
+.inputs .increment-button-qty {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 98px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border-right: 1px solid rgb(225, 224, 215);
+    text-align: center;
+    margin: 8px 0 8px 0;
+    line-height: 0;
+}
+
+.inputs .increment-button img,
+.inputs .increment-button-qty img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.inputs input {
+    flex-grow: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    min-width: 25%;
+    background: none;
+    color: inherit;
+    font-size: 1.3em;
+    font-family: inherit;
+    font-weight: 500;
+    text-align: right;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+}
+
+.large {
+    font-size: 1.3em;
+}
+
+
+/*Remove default incrementers from Chrome/Safari*/
+
+.inputs input::-webkit-outer-spin-button,
+.inputs input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:disabled {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.orange:disabled {
+    color: #E24F00;
+    opacity: 1;
+}
+
+.orange {
+    color: #E24F00;
+}
+
+.inputs input.warning {
+    border-color: #E24F00;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    color: #E24F00;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 0.4em;
+    margin-bottom: 2em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1em;
+}
+
+.center {
+    text-align: center!important;
+}
+
+.normal {
+    font-weight: normal;
+}
+
+::selection {
+    background: rgb(225, 224, 215);
+}
+
+::-moz-selection {
+    background: rgb(225, 224, 215);
+}
+
+.flour-icon {
+    background: #E24F00;
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    border-radius: 36px;
+}
+
+.flour-icon-image {
+    margin-top: 13px;
+    margin-left: -2px;
+    width: 48px;
+}
+
+.copy {
+    margin-top: 1.2em;
+    text-align: right;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.reset-footer {
+    margin-top: 15em;
+    margin-bottom: 0;
+    font-size: 0.5em;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.readonly {
+    pointer-events: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+
+/* modal */
+
+.ingredients-button {
+    cursor: pointer;
+    margin-top: 1.4em;
+    /*color: #E24F00;*/
+    background: #fff;
+    text-align: center;
+    padding: 0.6em 0.3em 0.6em 0.6em;
+    font-weight: 600;
+    border-radius: 4px;
+    border: 1px solid rgb(225, 224, 215);
+}
+
+#modal {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 32px;
+    overflow-y: scroll;
+    z-index: 99999;
+}
+
+.modal-panel {
+    flex-grow: 1;
+    margin: auto;
+    /*background: #fff;*/
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.25);
+}
+
+@media only screen and (min-width: 320px) {
+    .modal-panel {
+        max-width: 380px;
+    }
+}
+
+.modal-panel form input[type=checkbox] {
+    float: left;
+    margin-right: 10px;
+}
+
+.modal-panel form label {
+    display: block;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.modal-panel form label:last-of-type {
+    margin-bottom: 0;
+}
+
+.modal-content {
+    padding: 32px;
+}
+
+.modal-buttongroup {
+    width: 100%;
+    border-top: 1px solid rgb(225, 224, 215);
+    text-align: right;
+}
+
+.modal-buttongroup input[type=button] {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    color: #E24F00;
+    background: transparent;
+    text-align: center;
+    padding: 12px 32px;
+    font-weight: 600;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.noscrolly {
+    overflow: hidden !important;
+}
