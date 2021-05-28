@@ -16,5 +16,17 @@ var raw_ingredients = [
 	{ 'name': 'honey', 'hydration': 17.8 },
 	{ 'name': 'butter', 'hydration': 18 },
 	{ 'name': 'oil', 'hydration': 0 }
-]
+];
+
+function compare_by_name( a, b ) {
+	if ( a.name < b.name ){
+	  return -1;
+	}
+	if ( a.name > b.name ){
+	  return 1;
+	}
+	return 0;
+  }
+
+raw_ingredients.sort(compare_by_name);
 
