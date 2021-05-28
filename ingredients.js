@@ -7,6 +7,7 @@ var raw_ingredients = [
 	{ 'name': 'baking_soda', 'hydration': 0 },
 	{ 'name': 'salt', 'hydration': 0 },
 	{ 'name': 'milk', 'hydration': 87 },
+	{ 'name': 'lemon_juice', 'hydration': 83 },	
 	{ 'name': 'half_half', 'hydration': 80.5 },
 	{ 'name': 'eggs', 'hydration': 74 },
 	{ 'name': 'egg_white', 'hydration': 88 },	
