@@ -69,10 +69,10 @@ class RecipeController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    @IBAction func handleQR() {
-        NotificationCenter.default.post(name: Notification.Name.QRScanner, object: self)
+    @IBAction func handleLongPress(recognizer:UILongPressGestureRecognizer) {
+        NotificationCenter.default.post(name: Notification.Name.SwitchToBackoffice, object: self)
     }
-    
+       
     @IBAction func handleShare()
     {
         var extraActivities:[ShareRecipe] = []

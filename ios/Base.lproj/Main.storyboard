@@ -53,6 +53,9 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Iog-7c-os4" appends="YES" id="emm-6n-K2v"/>
+                                </connections>
                             </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gpd-Ar-5U4"/>
@@ -77,7 +80,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rN-lq-K29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Whg-HN-cab"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Iog-7c-os4">
+                    <connections>
+                        <action selector="handleLongPressWithRecognizer:" destination="WV8-Oa-qlH" id="DZs-ZQ-hbc"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-471" y="-173"/>
         </scene>
@@ -170,7 +177,6 @@
                                 <color key="barTintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem largeTitleDisplayMode="never" id="uOr-6k-hey">
-                                        <nil key="title"/>
                                         <leftBarButtonItems>
                                             <barButtonItem systemItem="refresh" id="WvL-MY-z2R">
                                                 <color key="tintColor" red="0.8862745098" green="0.30980392159999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -191,6 +197,9 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Kid-sC-PIX" appends="YES" id="vqD-UC-mXp"/>
+                                </connections>
                             </navigationBar>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="9JP-Sm-kFf">
                                 <rect key="frame" x="-3" y="88" width="422" height="5"/>
@@ -202,6 +211,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oRl-uX-LnT"/>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97254901960784312" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="xxV-OC-Znz" firstAttribute="trailing" secondItem="oRl-uX-LnT" secondAttribute="trailing" id="6TE-PR-Rzq"/>
                             <constraint firstItem="pNh-hY-X27" firstAttribute="top" secondItem="xxV-OC-Znz" secondAttribute="bottom" constant="-3" id="9ac-VJ-FRx"/>
@@ -212,6 +222,9 @@
                             <constraint firstItem="xxV-OC-Znz" firstAttribute="top" secondItem="oRl-uX-LnT" secondAttribute="top" id="o9o-Rs-wIZ"/>
                             <constraint firstAttribute="bottom" secondItem="pNh-hY-X27" secondAttribute="bottom" id="wGL-ET-txo"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Kid-sC-PIX" appends="YES" id="VFJ-K2-vmc"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="browser" destination="pNh-hY-X27" id="yg7-5W-00W"/>
@@ -220,6 +233,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAI-Np-T2l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Kid-sC-PIX">
+                    <connections>
+                        <action selector="handleLongPressWithRecognizer:" destination="MbQ-iJ-heh" id="Knn-9Y-tcT"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="617" y="-173"/>
         </scene>
@@ -439,7 +457,7 @@
         <image name="camera" width="33.5" height="33.5"/>
         <image name="paynow_qr_code" width="100" height="100"/>
         <image name="plus" width="33.5" height="33.5"/>
-        <image name="sourdough_east_bot" width="810" height="810"/>
+        <image name="sourdough_east_bot" width="195" height="195"/>
         <image name="tab" width="25" height="25"/>
         <image name="unlocked" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">

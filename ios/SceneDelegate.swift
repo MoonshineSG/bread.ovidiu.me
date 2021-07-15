@@ -36,6 +36,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         NotificationCenter.default.addObserver(forName: Notification.Name.ShowBackoffice, object: nil, queue: nil, using:self.showBackoffice)
         
+        
+        NotificationCenter.default.addObserver(forName:  Notification.Name.SwitchToRecipes , object: nil, queue: .main) { [weak self] notification in
+            self?.window?.rootViewController = self?.mainController
+            self?.shortcut = "sourdough.recipes"
+            self?.setupQuickAction()
+        }
+        
+        NotificationCenter.default.addObserver(forName:  Notification.Name.SwitchToBackoffice , object: nil, queue: .main) { [weak self] notification in
+            self?.window?.rootViewController = self?.backofficeController
+            self?.shortcut = "sourdough.backoffice"
+            self?.setupQuickAction()
+        }
+                
         if let shortcutItem = connectionOptions.shortcutItem {
             shortcut = shortcutItem.type
         }
@@ -47,7 +60,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func setupQuickAction(){
-        UserDefaults.standard.set(shortcut, forKey: "sourdough.shortcut")
         var shortcutItems = UIApplication.shared.shortcutItems ?? []
         if let mutableShortcutItem = shortcutItems.first?.mutableCopy() as? UIMutableApplicationShortcutItem {
             if shortcut == "sourdough.backoffice" {
@@ -63,7 +75,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         shortcutItems[0] = mutableShortcutItem
         }
-        
         UIApplication.shared.shortcutItems = shortcutItems
     }
     
@@ -86,12 +97,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    var shortcut:String? = UserDefaults.standard.string(forKey: "sourdough.shortcut")
+    var shortcut: String {
+        get{
+            if let s = UserDefaults.standard.string(forKey: "sourdough.shortcut") {
+                return s
+            } else {
+                return "sourdough.recipes"
+            }
+        }
+        set(val) {
+            UserDefaults.standard.set(val, forKey: "sourdough.shortcut")
+        }
+
+    }
+
     
     func sceneWillEnterForeground(_ scene: UIScene) {
-        if shortcut == nil {
-            self.window?.rootViewController = self.mainController
-        } else {
             if (self.shortcut == "sourdough.recipes") {
                 self.window?.rootViewController = self.mainController
             } else {
@@ -106,7 +127,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.shortcut = "sourdough.backoffice"
             }
             setupQuickAction()
-        }
     }
     
 }

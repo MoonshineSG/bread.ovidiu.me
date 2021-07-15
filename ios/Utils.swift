@@ -54,10 +54,12 @@ extension NSNotification.Name {
     public static let QRImages: NSNotification.Name = NSNotification.Name(rawValue: "QRImages")
     public static let ShowBackoffice: NSNotification.Name = NSNotification.Name(rawValue: "ShowBackoffice")
     public static let ReloadAllTabs: NSNotification.Name = NSNotification.Name(rawValue: "ReloadAllTabs")
-    
+
+    public static let SwitchToBackoffice: NSNotification.Name = NSNotification.Name(rawValue: "SwitchToBackoffice")
+
+    public static let SwitchToRecipes: NSNotification.Name = NSNotification.Name(rawValue: "SwitchToRecipes")
+
 }
-
-
 
 func clearCache(){
     HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)

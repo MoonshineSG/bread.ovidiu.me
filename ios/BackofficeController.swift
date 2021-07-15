@@ -32,6 +32,10 @@ class BackofficeController: UIViewController  {
         NotificationCenter.default.post(name: Notification.Name.QRScanner, object: self)
     }
     
+    @IBAction func handleLongPress(recognizer:UILongPressGestureRecognizer) {
+        NotificationCenter.default.post(name: Notification.Name.SwitchToRecipes, object: self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

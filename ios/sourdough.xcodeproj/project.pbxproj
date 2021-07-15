@@ -23,12 +23,24 @@
 		A5B79676246A3C4100335A0B /* RecipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B79675246A3C4100335A0B /* RecipeController.swift */; };
 		A5B79678246A3C8700335A0B /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B79677246A3C8700335A0B /* RecipeStore.swift */; };
 		A5B7967A246A3CD000335A0B /* GithubStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B79679246A3CD000335A0B /* GithubStorage.swift */; };
+		A5B96A0C2674B9780028B16F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B96A0B2674B9780028B16F /* AppDelegate.swift */; };
+		A5B96A0E2674B9780028B16F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B96A0D2674B9780028B16F /* SceneDelegate.swift */; };
+		A5B96A102674B9780028B16F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B96A0F2674B9780028B16F /* ViewController.swift */; };
+		A5B96A132674B9780028B16F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B96A112674B9780028B16F /* Main.storyboard */; };
+		A5B96A182674B9790028B16F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B96A162674B9790028B16F /* LaunchScreen.storyboard */; };
+		A5B96A1E2674B9FA0028B16F /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51998AB263A774A00C61655 /* ScannerViewController.swift */; };
+		A5B96A1F2674BA8C0028B16F /* ScannerOverlayPreviewLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57F304C263E5E790066EA03 /* ScannerOverlayPreviewLayer.swift */; };
+		A5B96A202674BAA20028B16F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5400DB12468F3B300C0BEA7 /* Utils.swift */; };
+		A5B96A212676FE650028B16F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AA0303245D0D3B00DA90E3 /* Assets.xcassets */; };
 		A5F3DA802642650800C786E0 /* BackofficeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3DA7F2642650800C786E0 /* BackofficeController.swift */; };
+		DEA75D2343F2C0154076E22D /* Pods_Bread_QR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C23478F954A9A8CA9DF7938 /* Pods_Bread_QR.framework */; };
 		E5CE1B6C4D148729D5BF6145 /* Pods_sourdough.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C889C2968F8AB6AD3949B05B /* Pods_sourdough.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C23478F954A9A8CA9DF7938 /* Pods_Bread_QR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bread_QR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ABA250314B315C2F99F29E5 /* Pods-sourdough.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sourdough.debug.xcconfig"; path = "Target Support Files/Pods-sourdough/Pods-sourdough.debug.xcconfig"; sourceTree = "<group>"; };
+		43211C4CA394AB54732C19B0 /* Pods-Bread QR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bread QR.release.xcconfig"; path = "Target Support Files/Pods-Bread QR/Pods-Bread QR.release.xcconfig"; sourceTree = "<group>"; };
 		7BB1EB25BEAE78376E950AF7 /* Pods_Sourdough_QR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sourdough_QR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82520A201D196606466CB08D /* Pods-sourdough.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sourdough.release.xcconfig"; path = "Target Support Files/Pods-sourdough/Pods-sourdough.release.xcconfig"; sourceTree = "<group>"; };
 		A51998AB263A774A00C61655 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -50,8 +62,16 @@
 		A5B79675246A3C4100335A0B /* RecipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeController.swift; sourceTree = "<group>"; };
 		A5B79677246A3C8700335A0B /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 		A5B79679246A3CD000335A0B /* GithubStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubStorage.swift; sourceTree = "<group>"; };
+		A5B96A092674B9780028B16F /* Bread QR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bread QR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B96A0B2674B9780028B16F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5B96A0D2674B9780028B16F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A5B96A0F2674B9780028B16F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5B96A122674B9780028B16F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5B96A172674B9790028B16F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5B96A192674B9790028B16F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5F3DA7F2642650800C786E0 /* BackofficeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackofficeController.swift; sourceTree = "<group>"; };
 		C889C2968F8AB6AD3949B05B /* Pods_sourdough.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sourdough.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E464A25D5DFD52227868E726 /* Pods-Bread QR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bread QR.debug.xcconfig"; path = "Target Support Files/Pods-Bread QR/Pods-Bread QR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +84,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5B96A062674B9780028B16F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEA75D2343F2C0154076E22D /* Pods_Bread_QR.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -73,6 +101,7 @@
 				A520A578255514F2007ED466 /* CloudKit.framework */,
 				C889C2968F8AB6AD3949B05B /* Pods_sourdough.framework */,
 				7BB1EB25BEAE78376E950AF7 /* Pods_Sourdough_QR.framework */,
+				1C23478F954A9A8CA9DF7938 /* Pods_Bread_QR.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,6 +111,8 @@
 			children = (
 				2ABA250314B315C2F99F29E5 /* Pods-sourdough.debug.xcconfig */,
 				82520A201D196606466CB08D /* Pods-sourdough.release.xcconfig */,
+				E464A25D5DFD52227868E726 /* Pods-Bread QR.debug.xcconfig */,
+				43211C4CA394AB54732C19B0 /* Pods-Bread QR.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -107,6 +138,7 @@
 				A5400DB12468F3B300C0BEA7 /* Utils.swift */,
 				A5AA0308245D0D3B00DA90E3 /* Info.plist */,
 				A59E9A19264E094100484571 /* Sourdough.entitlements */,
+				A5B96A0A2674B9780028B16F /* Bread QR */,
 				A5AA02F8245D0D3A00DA90E3 /* Products */,
 				850B2976709CF60D79DCCF8A /* Pods */,
 				8366C676BEF411488480286C /* Frameworks */,
@@ -117,8 +149,22 @@
 			isa = PBXGroup;
 			children = (
 				A5AA02F7245D0D3A00DA90E3 /* Sourdough.app */,
+				A5B96A092674B9780028B16F /* Bread QR.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A5B96A0A2674B9780028B16F /* Bread QR */ = {
+			isa = PBXGroup;
+			children = (
+				A5B96A0B2674B9780028B16F /* AppDelegate.swift */,
+				A5B96A0D2674B9780028B16F /* SceneDelegate.swift */,
+				A5B96A0F2674B9780028B16F /* ViewController.swift */,
+				A5B96A112674B9780028B16F /* Main.storyboard */,
+				A5B96A162674B9790028B16F /* LaunchScreen.storyboard */,
+				A5B96A192674B9790028B16F /* Info.plist */,
+			);
+			path = "Bread QR";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +189,25 @@
 			productReference = A5AA02F7245D0D3A00DA90E3 /* Sourdough.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A5B96A082674B9780028B16F /* Bread QR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B96A1A2674B9790028B16F /* Build configuration list for PBXNativeTarget "Bread QR" */;
+			buildPhases = (
+				306375D8074FEFB7694D23D3 /* [CP] Check Pods Manifest.lock */,
+				A5B96A052674B9780028B16F /* Sources */,
+				A5B96A062674B9780028B16F /* Frameworks */,
+				A5B96A072674B9780028B16F /* Resources */,
+				349DFFC583F40766475AD1B5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bread QR";
+			productName = "Bread QR";
+			productReference = A5B96A092674B9780028B16F /* Bread QR.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -155,6 +220,9 @@
 				TargetAttributes = {
 					A5AA02F6245D0D3A00DA90E3 = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					A5B96A082674B9780028B16F = {
+						CreatedOnToolsVersion = 12.5;
 					};
 				};
 			};
@@ -172,6 +240,7 @@
 			projectRoot = "";
 			targets = (
 				A5AA02F6245D0D3A00DA90E3 /* sourdough */,
+				A5B96A082674B9780028B16F /* Bread QR */,
 			);
 		};
 /* End PBXProject section */
@@ -187,9 +256,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5B96A072674B9780028B16F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B96A182674B9790028B16F /* LaunchScreen.storyboard in Resources */,
+				A5B96A212676FE650028B16F /* Assets.xcassets in Resources */,
+				A5B96A132674B9780028B16F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		306375D8074FEFB7694D23D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bread QR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		349DFFC583F40766475AD1B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bread QR/Pods-Bread QR-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bread QR/Pods-Bread QR-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bread QR/Pods-Bread QR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3E5650F669B5E979440EE0E0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +370,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5B96A052674B9780028B16F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B96A102674B9780028B16F /* ViewController.swift in Sources */,
+				A5B96A1F2674BA8C0028B16F /* ScannerOverlayPreviewLayer.swift in Sources */,
+				A5B96A0C2674B9780028B16F /* AppDelegate.swift in Sources */,
+				A5B96A0E2674B9780028B16F /* SceneDelegate.swift in Sources */,
+				A5B96A1E2674B9FA0028B16F /* ScannerViewController.swift in Sources */,
+				A5B96A202674BAA20028B16F /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -267,6 +398,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5AA0306245D0D3B00DA90E3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A5B96A112674B9780028B16F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B96A122674B9780028B16F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A5B96A162674B9790028B16F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B96A172674B9790028B16F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -432,6 +579,48 @@
 			};
 			name = Release;
 		};
+		A5B96A1B2674B9790028B16F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E464A25D5DFD52227868E726 /* Pods-Bread QR.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZE7ZAS86N;
+				INFOPLIST_FILE = "Bread QR/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ovidiu.Bread-QR";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5B96A1C2674B9790028B16F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43211C4CA394AB54732C19B0 /* Pods-Bread QR.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZE7ZAS86N;
+				INFOPLIST_FILE = "Bread QR/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ovidiu.Bread-QR";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -449,6 +638,15 @@
 			buildConfigurations = (
 				A5AA030C245D0D3B00DA90E3 /* Debug */,
 				A5AA030D245D0D3B00DA90E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5B96A1A2674B9790028B16F /* Build configuration list for PBXNativeTarget "Bread QR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B96A1B2674B9790028B16F /* Debug */,
+				A5B96A1C2674B9790028B16F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
