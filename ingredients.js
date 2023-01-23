@@ -15,6 +15,7 @@ var other_ingredients = [
 	{ 'name': 'milk', 'hydration': 87 },
 	{ 'name': 'milk_powder', 'hydration': 0 },	
 	{ 'name': 'lemon_juice', 'hydration': 83 },	
+	{ 'name': 'citric_acid', 'hydration': 0 },
 	{ 'name': 'half_half', 'hydration': 80.5 },
 	{ 'name': 'eggs', 'hydration': 74 },
 	{ 'name': 'egg_white', 'hydration': 88 },	
