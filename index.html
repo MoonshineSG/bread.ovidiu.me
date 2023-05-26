@@ -272,16 +272,16 @@
 			self.split.subscribe(function (newValue) {
 				updateQueryStringParam('split', newValue);
 				if (newValue == 100) {
-					$("#wf_slider-label").html("<span class='normal'>100 % white flour<\/span>");
+					$("#wf_slider-label").html("<span class='normal'>100 % flour type A<\/span>");
 					$("#wf_split").html("");
 				} else if (newValue == 0) {
-					$("#wf_slider-label").html("<span class='normal'>100 % wholemeal flour<\/span>");
+					$("#wf_slider-label").html("<span class='normal'>100 % flour type B<\/span>");
 					$("#wf_split").html("");
 				} else {
-					$("#wf_slider-label").html("<span class='normal'>" + (100 - newValue) + " % wholemeal flour<\/span>");
+					$("#wf_slider-label").html("<span class='normal'>" + (100 - newValue) + " % flour type B<\/span>");
 
 					var whiteFlour = round(recipe.flour() * newValue / 100);
-					$("#wf_split").html("<strong class='large'>" + whiteFlour + " g<\/strong> white flour<br/><strong class='large'>" + (recipe.flour() - whiteFlour) + " g<\/strong> wholemeal flour");
+					$("#wf_split").html("<strong class='large'>" + whiteFlour + " g<\/strong> flour type A<br/><strong class='large'>" + (recipe.flour() - whiteFlour) + " g<\/strong> flour type B");
 				}
 			});
 
