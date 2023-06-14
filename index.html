@@ -430,7 +430,7 @@
 				});
 				console.log("costIngredientsPerGram : "+ costIngredientsPerGram);
 				f1  = (self.flour() * self.split() / 100) +  gramsStarter / 2 ;
-				f2 = self.flour() - f1;
+				f2 = self.flour() -  (self.flour() * self.split() / 100);
 				console.log("f1 " + f1);
 				console.log("f2: " + f2);
 				costIngredientsPerGram += f1 * ( 48.7 / 25000 ); //bag of 25kg
