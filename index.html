@@ -425,11 +425,17 @@
 				});
 
 				var costIngredientsCopy = "";
-				var costIngredients = _.sumBy(self.ingredients(), function (o) {
+				var costIngredientsPerGram = _.sumBy(self.ingredients(), function (o) {
 					return Number(o.value()) * o.price;
 				});
 
-				costIngredients += gramsFlour *  ( 48.7 / 25000 ) //bag of 25kg
+
+				f1  = (gramsFlour * self.split() / 100) + gramsStarter / 2
+				f2 = gramsFlour - f1
+
+				costIngredientsPerGram += f1 *  ( 48.7 / 25000 ) //bag of 25kg
+				costIngredientsPerGram += f2 *  ( 47.5 / 4110 ) // special flour
+
 				costIngredientsCopy = "<p class='center'>Ingredients cost S$" + Math.round( costIngredients / self.qty() * 100)/100   + "/piece</p>"
 
 				self.totalHydration = Math.round(gramsWater * 100 / gramsFlour * 10) / 10;
