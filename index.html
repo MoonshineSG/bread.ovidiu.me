@@ -429,10 +429,10 @@
 					return Number(o.value()) * o.price;
 				});
 				console.log("costIngredientsPerGram : "+ costIngredientsPerGram);
-				f1  = (gramsFlour * self.split() / 100) + gramsStarter / 2;
-				f2 = gramsFlour - f1;
-				console.log("f1 "+f1);
-				console.log("f2: "+ f2);
+				f1  = (self.flour() * self.split() / 100) ;
+				f2 = self.flour() - f1;
+				console.log("f1 " + f1);
+				console.log("f2: " + f2);
 				costIngredientsPerGram += f1 * ( 48.7 / 25000 ); //bag of 25kg
 				console.log("bag 25kg " + ( 48.7 / 25000 ));
 				console.log(" * f1 "+ f1 * ( 48.7 / 25000 ));
