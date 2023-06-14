@@ -1,7 +1,14 @@
 platform :ios, '13.0'
-
+use_frameworks!
+  
 target 'sourdough' do
-  use_frameworks!
+  pod 'Alamofire', '~> 5.1'
+  pod 'Zip', '~> 1.1'
+  pod 'RNCryptor', '~> 5.0'
+end
+
+
+target 'Bread QR' do
   pod 'Alamofire', '~> 5.1'
   pod 'Zip', '~> 1.1'
   pod 'RNCryptor', '~> 5.0'
