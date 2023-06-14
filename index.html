@@ -162,6 +162,7 @@
 
 			self.name = i['name'];
 			self.hydration = Number(i['hydration']);
+			self.price = Number(i['price']);
 
 			//percentage update only when direct input 
 			self.updatePercentage = true;
@@ -427,8 +428,9 @@
 				var costIngredients = _.sumBy(self.ingredients(), function (o) {
 					return Number(o.value()) * o.price;
 				});
+
 				costIngredients += gramsFlour *  ( 48.7 / 25000 ) //bag of 25kg
-				costIngredientsCopy = "<p class='center'>S$" + costIngredients / self.qty()   + "/piece</p>"
+				costIngredientsCopy = "<p class='center'>S$" + Math.round( costIngredients / self.qty() * 100)/100   + "/piece</p>"
 
 				self.totalHydration = Math.round(gramsWater * 100 / gramsFlour * 10) / 10;
 
