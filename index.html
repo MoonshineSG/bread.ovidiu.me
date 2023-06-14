@@ -428,17 +428,13 @@
 				var costIngredientsPerGram = _.sumBy(self.ingredients(), function (o) {
 					return Number(o.value()) * o.price;
 				});
-				console.log("costIngredientsPerGram : "+ costIngredientsPerGram);
+
 				f1  = (self.flour() * self.split() / 100) +  gramsStarter / 2 ;
-				f2 = self.flour() -  (self.flour() * self.split() / 100);
-				console.log("f1 " + f1);
-				console.log("f2: " + f2);
+				f2 = self.flour() - (self.flour() * self.split() / 100);
+
 				costIngredientsPerGram += f1 * ( 48.7 / 25000 ); //bag of 25kg
-				console.log("bag 25kg " + ( 48.7 / 25000 ));
-				console.log(" f1  price"+ f1 * ( 48.7 / 25000 ));
 				costIngredientsPerGram += f2 * ( 47.5 / 4110 ); // special flour
-				console.log("special "+ ( 47.5 / 4110 ));
-				console.log("f2 price "+ f2 * ( 47.5 / 4110 ));
+
 				var costIngredientsCopy = "<p class='center'>Ingredients cost S$" + Math.round( costIngredientsPerGram / self.qty() * 100)/100   + "/piece</p>"
 
 				self.totalHydration = Math.round(gramsWater * 100 / gramsFlour * 10) / 10;
