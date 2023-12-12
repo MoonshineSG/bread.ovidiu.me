@@ -26,6 +26,7 @@ var other_ingredients = [
 	{ 'name': 'oil', 'hydration': 0, 'price': 0  },
 	{ 'name': 'cardamon', 'hydration': 0, 'price': 0  },
 	{ 'name': 'cayenne_pepper', 'hydration': 0, 'price': 0  },
+	{ 'name': 'stout', 'hydration': 100, 'price': 4  },
 
 ];
 
