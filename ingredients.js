@@ -24,7 +24,9 @@ var other_ingredients = [
 	{ 'name': 'honey', 'hydration': 17.8, 'price': 0.0225 },
 	{ 'name': 'butter', 'hydration': 18, 'price': 0.0325  },
 	{ 'name': 'oil', 'hydration': 0, 'price': 0  },
-	{ 'name': 'poolish', 'hydration': 50, 'price': 0  }
+	{ 'name': 'cardamon', 'hydration': 0, 'price': 0  },
+	{ 'name': 'cayenne_pepper', 'hydration': 0, 'price': 0  },
+
 ];
 
 
